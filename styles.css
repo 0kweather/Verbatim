@@ -1,0 +1,374 @@
+@font-face {
+    font-family: "Neumatic Compressed";
+    src: url("fonts/NeumaticCompressed-Black.woff2") format("woff2");
+    font-weight: 900;
+    font-style: normal;
+    font-display: block;
+}
+
+:root {
+    --bg: #f2e3d3;
+    --swatch-1: rgba(0, 0, 0, 0.85);
+    --swatch-2: rgba(0, 0, 0, 0.75);
+    --swatch-3: rgba(0, 0, 0, 0.6);
+    --swatch-4: rgba(0, 0, 0, 0.4);
+    --swatch-5: rgba(0, 0, 0, 0.25);
+    --swatch-6: rgba(0, 0, 0, 0.1);
+    --base-size: 14.34px;
+    --border-w: 4.5rem;
+    --gutter: 2rem;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--base-size);
+    touch-action: manipulation;
+    -webkit-text-size-adjust: none;
+    /* White backdrop so the iPhone safe-area letterbox (notch / home-indicator
+       areas, outside the white border) and overscroll show white, not cream.
+       The cream page itself is painted by .content. */
+    background-color: #ffffff;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+body {
+    background-color: #ffffff;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* ===== Outer white border (desktop only) ===== */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    min-height: 100vh;
+    position: relative;
+    flex-grow: 1;
+    border: var(--border-w) solid #ffffff;
+    background-color: var(--bg);
+    width: 100%;
+}
+
+
+/* ===== Typography ===== */
+bodycopy {
+    display: block;
+    word-wrap: break-word;
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    font-size: 1.55rem;
+    font-weight: 400;
+    color: var(--swatch-2);
+    font-family: "guyot-text", "Guyot Text", Georgia, serif;
+    font-style: normal;
+    line-height: 1.3;
+    letter-spacing: 0;
+    font-variant-numeric: oldstyle-nums;
+}
+
+bodycopy p {
+    margin: 0 0 1.3em 0;
+}
+
+bodycopy p:last-child {
+    margin-bottom: 0;
+}
+
+bodycopy a {
+    color: inherit;
+    text-decoration: none;
+}
+
+bodycopy a:hover {
+    color: var(--swatch-2);
+}
+
+/* Inline prose link (e.g. social handle) */
+bodycopy a.text-link {
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+    text-decoration-thickness: 0.04em;
+}
+
+/* ===== Photo with subtle tonal wash ===== */
+.photo-wrap {
+    position: relative;
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 30%;
+    background: var(--bg);
+    /* thin rule (~hyperlink-underline weight) in the body text color, set slightly
+       off the photo via padding; box-sizing: border-box keeps the 30% footprint
+       fixed, so the image shrinks to fit and the border's outer edge lands exactly
+       where the image edge used to sit. */
+    border: 1px solid var(--swatch-2);
+    padding: 0.55rem;
+    margin: 0.2rem 1.4rem 0.6rem 0;
+}
+
+.photo-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: sepia(0.2) saturate(1) contrast(1.02) brightness(0.98);
+}
+
+.photo-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--bg);
+    mix-blend-mode: screen;
+    opacity: 0.07;
+    pointer-events: none;
+}
+
+h1 {
+    font-family: "Neumatic Compressed", "Gravity Variable", "Arial Narrow", sans-serif;
+    font-style: normal;
+    margin: 0;
+    font-size: 12rem;
+    line-height: 1;
+    color: var(--swatch-1);
+    letter-spacing: 0.010em;
+    font-weight: 900;
+}
+
+h1 a {
+    color: var(--swatch-1);
+    text-decoration: none;
+}
+
+.small-caps {
+    font-variant: small-caps;
+    text-transform: lowercase;
+}
+
+.muted {
+    color: var(--swatch-4);
+}
+
+.muted a {
+    color: var(--swatch-4);
+}
+
+.no-wrap {
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.rotated {
+    transform: rotate(180deg);
+}
+
+/* ===== Page content / column layout ===== */
+.page-content {
+    padding: 1.5rem;
+    width: 100%;
+    display: block;
+}
+
+.column-set {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: var(--gutter);
+    align-items: flex-start;
+}
+
+.column-unit {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.column-right {
+    text-align: right;
+}
+
+/* The main copy column shows its body text left-aligned, the nav column right-aligned */
+.main-columns .column-left {
+    text-align: right;
+}
+.main-columns .column-right {
+    text-align: left;
+}
+
+/* The large display words (VERBATIM/MEDIA) can be wider than their column at narrow
+   widths. Over-wide inline content ignores text-align and overflows toward the line's
+   END (the right, for LTR). In a right-aligned column that pushes the word PAST the
+   page's edge (this is why the footer's "VERBATIM" exits the colored area while the
+   header's left-column "VERBATIM" overflows harmlessly into the center). Flexbox pins
+   over-sized items correctly, so the right-column word's right edge stays put and any
+   overflow goes toward the center instead. */
+.site-header .column-right h1,
+.site-footer .column-right h1 {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* ===== Header (pinned top, overlay over content, scrolls with page) ===== */
+.site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 298;
+    pointer-events: none;
+}
+
+.site-header .page-content {
+    padding-top: 0.7rem;
+    padding-bottom: 0;
+    pointer-events: auto;
+}
+
+/* ===== Footer (pinned bottom, overlay) ===== */
+.site-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 297;
+    pointer-events: none;
+}
+
+/* Mirror of the header: 0.7rem of clearance below the footer text (outer/border side)
+   instead of above it, so the bottom text doesn't ride the edge of the colored area. */
+.site-footer .page-content {
+    padding-top: 0;
+    padding-bottom: 0.7rem;
+    pointer-events: auto;
+}
+
+.site-footer h1 a {
+    pointer-events: auto;
+}
+
+/* ===== Main middle area ===== */
+.site-main {
+    flex: 1 0 auto;
+    /* Leave space for absolutely-positioned header + footer */
+    padding-top: calc(12rem + 0.7rem + 1.5rem + 1.5rem);
+    padding-bottom: calc(12rem + 0.7rem + 1.5rem + 1.5rem);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.site-main .page-content {
+    max-width: 100%;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 800px) {
+    :root {
+        --base-size: 12px;
+        --border-w: 0.6rem;
+        --gutter: 0.1rem;
+        --mobile-section-gap: 2.05rem;
+    }
+
+    .content {
+        border: var(--border-w) solid #ffffff;
+        margin: 0;
+    }
+
+    /* Mobile header: smaller text via h1->h2 swap; we keep h1 but shrink */
+    h1 {
+        line-height: 0.9;
+        font-size: 5.45rem;
+        color: var(--swatch-2);
+    }
+
+    h1 a {
+        color: var(--swatch-2);
+    }
+
+    .site-header {
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .site-header .page-content {
+        padding: 0.7rem 1.5rem 0 1.5rem;
+    }
+
+    /* Footer shown on mobile, mirroring the header (upside-down VERBATIM / MEDIA) */
+    .site-footer {
+        display: block;
+    }
+
+    /* Footer columns stay side-by-side, matching the header */
+    .footer-columns {
+        flex-direction: row;
+        gap: 0.1rem;
+    }
+
+    .site-footer .page-content {
+        /* mirror of the header: 0.7rem clearance below the (rotated) footer text */
+        padding: 0 1.5rem 0.7rem 1.5rem;
+    }
+
+    /* Main content: stack columns vertically on mobile, left-aligned */
+    .main-columns {
+        flex-direction: column;
+        gap: var(--mobile-section-gap);
+    }
+
+    .main-columns .column-left,
+    .main-columns .column-right {
+        text-align: left;
+    }
+
+    /* Header columns stay side-by-side (mobile-stack="false") */
+    .header-columns {
+        flex-direction: row;
+        gap: 0.1rem;
+    }
+
+    .site-main {
+        /* h1 line-box (0.9 * 5.45rem) + header padding-top - page-content padding-top + section gap */
+        padding-top: calc(4.9rem + 0.7rem - 1.5rem + var(--mobile-section-gap));
+        /* symmetric with the top: footer mirrors the header (0.7rem outer clearance + section gap) */
+        padding-bottom: calc(4.9rem + 0.7rem - 1.5rem + var(--mobile-section-gap));
+    }
+
+    .site-main .page-content {
+        padding: 1.5rem;
+    }
+
+    bodycopy {
+        font-size: 1.35rem;
+    }
+}
+
+/* Smaller phones: tighter type */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 4.6rem;
+    }
+
+    .site-main {
+        padding-top: calc(4.14rem + 0.7rem - 1.5rem + var(--mobile-section-gap));
+        padding-bottom: calc(4.14rem + 0.7rem - 1.5rem + var(--mobile-section-gap));
+    }
+}
