@@ -294,7 +294,7 @@ h1 a {
     /* Mobile header: smaller text via h1->h2 swap; we keep h1 but shrink */
     h1 {
         line-height: 0.9;
-        font-size: 6.54rem;
+        font-size: 7.848rem;
         color: var(--swatch-2);
     }
 
@@ -346,10 +346,10 @@ h1 a {
     }
 
     .site-main {
-        /* h1 line-box (0.9 * 6.54rem) + header padding-top - page-content padding-top + section gap */
-        padding-top: calc(5.886rem + 0.7rem - 1.5rem + var(--mobile-section-gap));
+        /* h1 line-box (0.9 * 7.848rem) + header padding-top - page-content padding-top + section gap */
+        padding-top: calc(7.0632rem + 0.7rem - 1.5rem + var(--mobile-section-gap));
         /* symmetric with the top: footer mirrors the header (0.7rem outer clearance + section gap) */
-        padding-bottom: calc(5.886rem + 0.7rem - 1.5rem + var(--mobile-section-gap));
+        padding-bottom: calc(7.0632rem + 0.7rem - 1.5rem + var(--mobile-section-gap));
     }
 
     .site-main .page-content {
@@ -364,11 +364,11 @@ h1 a {
 /* Smaller phones: tighter type */
 @media (max-width: 480px) {
     h1 {
-        font-size: 5.52rem;
+        font-size: 6.624rem;
     }
 
     .site-main {
-        padding-top: calc(4.968rem + 0.7rem - 1.5rem + var(--mobile-section-gap));
-        padding-bottom: calc(4.968rem + 0.7rem - 1.5rem + var(--mobile-section-gap));
+        padding-top: calc(5.9616rem + 0.7rem - 1.5rem + var(--mobile-section-gap));
+        padding-bottom: calc(5.9616rem + 0.7rem - 1.5rem + var(--mobile-section-gap));
     }
 }
