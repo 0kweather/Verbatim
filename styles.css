@@ -128,7 +128,7 @@ bodycopy a.text-link {
     display: block;
     width: 100%;
     height: auto;
-    filter: sepia(0.2) saturate(-0.8) contrast(1.02) brightness(0.98);
+    filter: sepia(0.2) saturate(0.8) contrast(1.02) brightness(0.98) greyscale(0.4);
 }
 
 .photo-wrap::after {
