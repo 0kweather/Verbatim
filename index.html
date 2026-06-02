@@ -6,8 +6,13 @@
     <meta name="theme-color" content="#ffffff">
     <title>Verbatim Media</title>
     <meta name="description" content="Verbatim Media — a full-service production and strategy firm for the next generation of independent media.">
+    <link rel="icon" href="favicons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="favicons/apple-touch-icon.png">
+    <link rel="manifest" href="favicons/site.webmanifest">
     <link rel="stylesheet" href="https://use.typekit.net/wni0paj.css">
-    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
     <div class="content">
@@ -34,6 +39,7 @@
                                 <span class="small-caps muted">
                                     <a href="#what-we-do" class="active">what we do</a><br>
                                     <a href="#who-we-are">who we are</a><br>
+                                    <a href="#our-clients">our clients</a><br>
                                     <a href="mailto:peter@verbatimedia.com">get in touch</a>
                                 </span>
                             </div>
@@ -44,6 +50,12 @@
                             <p><span class="small-caps">Verbatim Media</span> is a full-service media management and strategy firm for emerging outlets, digital channels, creators, and public figures who are serious about growing an audience and bringing a fresh perspective to today&rsquo;s news, politics, and opinion landscape. We provide liberal and left-leaning creators with the backend needed to thrive in today&rsquo;s evolving digital media environment.</p>
                             <p>We operate as an embedded partner&mdash;functioning as an executive producer, talent booker, business team, and strategic advisor all in one. For top-tier clients, that includes daily editorial involvement, dedicated production and editing support, and on-demand access to a rolodex spanning new media&rsquo;s most influential players and legacy outlets alike. Whether the need is a high-profile guest booked on short notice, a narrative crisis contained, or a ghostwritten book, Verbatim delivers with discretion and speed.</p>
                             <p>We bring platform-specific monetization expertise across YouTube, Substack, X, Twitch, and beyond. Every platform has its own audience dynamics, revenue mechanics, and growth levers&mdash;and most talent leaves real money on the table by treating them the same. Verbatim handles the strategy, the business development, and the production infrastructure, so clients can focus entirely on what they do best: making resonant content.</p>
+
+                            <hr>
+
+                            <p><span class="small-caps">Press for Verbatim Media:</span></p>
+
+                            <p>&ldquo;A group of young digital media personalities is launching Verbatim Media, a full-service media management and strategy firm for digital content creators that hopes to be the Red Seat Ventures of the left.&rdquo; &mdash;Max Tani, <em>Semafor</em></p>
                         </bodycopy>
                         <bodycopy data-section="who-we-are" style="display: none;">
                             <span class="photo-wrap"><img src="images/peter.jpg" alt="Peter Rothpletz"></span>
@@ -70,6 +82,15 @@
 
                             <p><span class="small-caps">More personnel to come soon.</span></p>
                         </bodycopy>
+                        <bodycopy data-section="our-clients" style="display: none;">
+                            <span class="photo-wrap"><img src="images/fanone.jpg" alt="Michael Fanone"></span>
+
+                            <p><span class="small-caps">Michael Fanone</span> is a former D.C. Metropolitan Police officer, author, and nationally recognized advocate for democracy and law enforcement accountability. On January 6, 2021, while off duty, he responded to the U.S. Capitol attack, where he was beaten, tased, and nearly killed defending democracy. His memoir, <em>Hold the Line</em>, became a <em>New York Times</em> bestseller, and in 2023, he was awarded the Presidential Citizens Medal by President Joseph R. Biden. His YouTube channel, &ldquo;The Michael Fanone Show,&rdquo; has amassed more than 570,000 subscribers.</p>
+
+                            <span class="photo-wrap"><img src="images/hughes.jpg" alt="Akilah Hughes"></span>
+
+                            <p><span class="small-caps">Akilah Hughes</span> is a writer, comedian, and YouTuber residing in Brooklyn, NY. She&rsquo;s been a digital correspondent for <em>MTV</em>, <em>Fusion</em>, <em>Comedy Central</em>, <em>Crooked Media</em>, and more. A Sundance Labs Fellow, Akilah most recently appeared on the HBO series special <em>Pod Save America</em>. Her YouTube channel, &ldquo;It&rsquo;s Akilah, Obviously!&rdquo; has amassed more than 150,000 subscribers.</p>
+                        </bodycopy>
                     </div>
                 </div>
             </div>
@@ -92,12 +113,14 @@
 
     <script>
         (function () {
-            var SECTIONS = ['what-we-do', 'who-we-are'];
             var DEFAULT = 'what-we-do';
             var TITLES = {
                 'what-we-do': 'Verbatim Media',
-                'who-we-are': 'Verbatim Media — Who We Are'
+                'who-we-are': 'Verbatim Media — Who We Are',
+                'our-clients': 'Verbatim Media — Our Clients'
             };
+            // Valid sections are exactly the keys of TITLES, so there's one list to maintain.
+            var SECTIONS = Object.keys(TITLES);
 
             var sections = document.querySelectorAll('bodycopy[data-section]');
             var navLinks = document.querySelectorAll('.nav-stack a');
@@ -109,7 +132,7 @@
                 navLinks.forEach(function (a) {
                     a.classList.toggle('active', a.getAttribute('href') === '#' + name);
                 });
-                if (TITLES[name]) { document.title = TITLES[name]; }
+                document.title = TITLES[name];
                 if (doScroll) { window.scrollTo(0, 0); }
             }
 
